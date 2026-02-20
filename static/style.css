@@ -1,0 +1,113 @@
+:root {
+    --primary-blue: #0056b3;
+    --light-blue: #e8f4f8;
+    --warning-orange: #ff9800;
+    --danger-red: #d32f2f;
+    --text-dark: #333;
+    --bg-light: #f4f7f6;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+.dev-banner {
+    background-color: var(--warning-orange);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 1.1em;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    color: var(--primary-blue);
+    margin-bottom: 5px;
+}
+
+.dashboard-card, .student-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    border-top: 4px solid var(--primary-blue);
+}
+
+.student-card {
+    border-top: 4px solid #95a5a6;
+    opacity: 0.9;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #004494;
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+}
+
+.chat-box {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.chat-box input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.response-box {
+    margin-top: 20px;
+    padding: 15px;
+    background: var(--light-blue);
+    border-left: 4px solid var(--primary-blue);
+    border-radius: 0 5px 5px 0;
+}
+
+.alert {
+    color: var(--danger-red);
+}
+
+.text-muted {
+    color: #666;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOOP - EduGuardian AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="dev-banner">
+        🚧 <strong>Notice:</strong> The Student Web App is currently under development. Currently, only the <strong>Teacher Dashboard</strong> is fully ready. 🚧
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>LOOP: EduGuardian AI</h1>
+            [cite_start]<p>Your governed, curriculum-bound AI learning companion[cite: 36, 37].</p>
+        </header>
+
+        <div class="dashboard-card">
+            <h2>👨‍🏫 Faculty Area</h2>
+            [cite_start]<p>Access the EduChampion analytics engine, student performance predictions, and sustainability tracking[cite: 80, 81, 84].</p>
+            <a href="/faculty" class="btn btn-primary">Go to Teacher Dashboard</a>
+        </div>
+
+        <div class="student-card">
+            <h3>Student Interface (Preview)</h3>
+            <div class="chat-box">
+                <input type="text" id="query" placeholder="Ask about your coursework (e.g., 'What is machine learning?')...">
+                <button onclick="askAgent()" class="btn btn-secondary">Ask Agent</button>
+            </div>
+            <div id="response" class="response-box" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        async function askAgent() {
+            const query = document.getElementById('query').value;
+            const resDiv = document.getElementById('response');
+            resDiv.style.display = 'block';
+            resDiv.innerHTML = '<i>Processing via Integrity Firewall & Knowledge Vault...</i>';
+            
+            try {
+                const response = await fetch('/api/ask', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({query: query})
+                });
+                const data = await response.json();
+                
+                if(data.status === 'blocked') {
+                    resDiv.innerHTML = `<span class="alert"><b>Integrity Firewall Alert:</b> ${data.message}</span>`;
+                } else {
+                    resDiv.innerHTML = `<b>Pedagogical Agent:</b> ${data.feedback} <br><br>
+                    <small class="text-muted">Concept Mastery updated to: ${data.mastery.score}%</small>`;
+                }
+            } catch (error) {
+                resDiv.innerHTML = `<span class="alert">Error connecting to the agent.</span>`;
+            }
+        }
+    </script>
+</body>
+</html>
